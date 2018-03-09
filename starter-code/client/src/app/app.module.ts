@@ -1,20 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule} from '@angular/router';
+
+
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { RetrieveService } from './services/retrieve.service';
+import { EntryListComponent } from './entry-list/entry-list.component';
+import { SingleEntryComponent } from './single-entry/single-entry.component';
+
+
+
+const routes = [
+  {path: 'entry-list', component: EntryListComponent},
+  {path: 'entry-list/:id', component: SingleEntryComponent}
+];
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EntryListComponent,
+    SingleEntryComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [RetrieveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

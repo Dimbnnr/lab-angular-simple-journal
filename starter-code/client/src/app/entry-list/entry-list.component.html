@@ -1,0 +1,10 @@
+<p>
+    Entry-List
+  </p>
+  <div *ngFor = "let list of entryList">
+      
+    <p>{{list.title}}</p>
+    <p>{{list.date}}</p>
+<a [routerLink]="[list._id]">view details</a>
+  
+  </div>
